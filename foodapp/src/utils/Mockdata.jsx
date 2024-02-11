@@ -233,7 +233,7 @@ const resObj= [
           iconType: "EMPTY",
         },
         promoted: false,
-        avgRating: "4.4",
+        avgRating: "4.1",
         totalRatings: 100,
         new: false,
       },

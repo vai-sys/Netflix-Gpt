@@ -12,7 +12,7 @@ const Header = () => {
                 <li>Home</li>
                 <li>About Us</li>
                 <li>Contact Us</li>
-                <li>< GrCart/></li>
+                <li >< GrCart  className='cart'/></li>
             </ul>
 
         </div>

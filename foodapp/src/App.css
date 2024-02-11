@@ -1,3 +1,5 @@
+
+
 .header{
     display:flex;
     justify-content: space-between;
@@ -14,6 +16,14 @@
     padding:20px;
     margin:10px;
     list-style: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+}
+.cart{
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top:-10px;
 }
 .res-card{
     width:350px;
@@ -30,6 +40,7 @@
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    overflow: hidden;
    
 }
 .search{
@@ -49,7 +60,40 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-left:140px;
-    margin-right:150px;
+    margin-left:60px;
+    margin-right:60px;
  
+}
+
+.first{
+    display:flex;
+    justify-content: space-between;
+    margin:0 25px;
+    gap:30px;
+    
+}
+.green p{
+    margin: 0 25px;
+}
+.second{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 20px;
+}
+.second p{
+    margin: 0  20px;
+}
+
+.green{
+    width:40px;
+    height:20px;
+    background-color: rgb(16, 77, 16);
+    color:white;
+    border-radius: 8px;
+    padding: 3px 3px ;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+   
 }
