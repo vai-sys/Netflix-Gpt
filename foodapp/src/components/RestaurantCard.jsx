@@ -1,15 +1,32 @@
-import React from 'react'
+import React from 'react';
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+  const { resData } = props;
+
+
+
+  const { name, cuisines, avgRating, costForTwo } = resData.data;
+
   return (
     <div className='res-card'>
-        <img className='res-logo' alt='img' src='https://th.bing.com/th/id/OIP.CpLQgkIRdyUy1TacJqLbBQAAAA?rs=1&pid=ImgDetMain' />
-        
-        <h3>Garva Biryani</h3>
-        <p>Price:400$</p>
-      
-    </div>
-  )
-}
+      <img
+        className='res-logo'
+        alt='img'
+        src=
+        {"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + resData.data.cloudinaryImageId
+               }
+      />
 
-export default RestaurantCard
+      <p>{name}</p>
+      <p>{cuisines.join(',')}</p>
+      <p>{avgRating}</p>
+      <p>{costForTwo / 100}</p>
+    </div>
+  );
+};
+
+export default RestaurantCard;
+
+
+
+

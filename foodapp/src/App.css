@@ -16,18 +16,40 @@
     list-style: none;
 }
 .res-card{
-    width:200px;
-    height:300px;
+    width:350px;
+    height:350px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     /* padding:10px 10px; */
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(203, 205, 205, 0.219);
+    background-color: rgba(238, 238, 238, 0.968);
+    margin:20px 20px;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+   
 }
 .search{
     padding:20px;
 }
 .res-logo{
-    width:190px;
+    width:328px;
+    height:248px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top:7px;
+}
+.res-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left:140px;
+    margin-right:150px;
+ 
 }
