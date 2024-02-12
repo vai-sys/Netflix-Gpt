@@ -97,3 +97,13 @@
     align-items: center;
    
 }
+
+.filter-btn{
+    cursor: pointer;
+    padding:10px 14px;
+    
+}
+.filter{
+   margin-left:90px;
+   margin-bottom:20px;
+}
