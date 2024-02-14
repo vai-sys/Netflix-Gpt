@@ -37,7 +37,7 @@
 
 import React, { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
-
+import Shimmer from './Shimmer';
 const Body = () => {
   const [listOfRestau, setListOfRestau] = useState([]);
   
@@ -59,9 +59,10 @@ const Body = () => {
     }
   };
 
-  return (
+  return listOfRestau.length===0 ? <Shimmer/> :(
     <div className='body'>
       <div className='res-container'>
+      
         {listOfRestau.map((restaurant) => (
           <RestaurantCard key={restaurant.data.id} resData={restaurant} />
         ))}
