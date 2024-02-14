@@ -1,7 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
 import { GrCart } from "react-icons/gr";
 
 const Header = () => {
+  const [loginname,setloginname]=useState('login');
   return (
     <div className='header'>
         <div className='logo-container'>
@@ -13,6 +15,9 @@ const Header = () => {
                 <li>About Us</li>
                 <li>Contact Us</li>
                 <li >< GrCart  className='cart'/></li>
+                <button className='login' onClick={()=>{
+                 loginname==='Login' ? setloginname('Logout'): setloginname('Login')
+                }}>{loginname}</button>
             </ul>
 
         </div>

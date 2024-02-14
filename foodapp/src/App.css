@@ -106,6 +106,13 @@
 .filter{
    margin-left:90px;
    margin-bottom:20px;
+   display:flex;
+
+   align-items: center;
+}
+.login{
+    margin-left:90px;
+    margin-bottom:20px  
 }
 .shimmer-container{
     display:flex;
@@ -117,4 +124,7 @@
     margin:20px;
     background-color: #f0f0f0;
 
+}
+.Search{
+margin-left:40px;
 }
