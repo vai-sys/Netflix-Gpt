@@ -4,7 +4,7 @@ import resObj from '../utils/Mockdata';
 
 const Body = () => {
   const [listOfRestau, setListOfRestau] = useState(resObj);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(" ");
 
   const handleFilter = () => {
     const filteredList = resObj.filter((res) => res.data.avgRating > 4);
