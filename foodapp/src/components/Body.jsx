@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import resObj from '../utils/Mockdata';
 
+
 const Body = () => {
   const [listOfRestau, setListOfRestau] = useState(resObj);
   const [searchText, setSearchText] = useState(" ");
@@ -19,6 +20,8 @@ const Body = () => {
   };
 
   return (
+    <>
+   
     <div className='body'>
       <div className='filter'>
         <button className='filter-btn' onClick={handleFilter}>
@@ -46,8 +49,10 @@ const Body = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
+
 
 export default Body;
 
