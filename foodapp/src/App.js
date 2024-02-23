@@ -7,6 +7,7 @@ import About from './components/About';
 import Error from './components/Error';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
+import User from './components/User'
 function App() {
   return (
     <div className="App">
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: 'About',
-        element: <About />, 
+        path: "about",
+        element: <About />,
+        children: [{ // nested routing
+          path: "profile",
+          element: <User />,
+        }]
       }, 
       {
         path: 'Contact',
