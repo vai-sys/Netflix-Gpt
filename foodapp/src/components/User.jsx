@@ -29,10 +29,15 @@ const User = () => {
         <div className="profile-class-container">
             <div className="profile-container">
                 <h1 className="profile-title">About Me</h1>
-                <ProfileUserClass data={userInfo} />
+               {
+                 <ProfileUserClass data={userInfo} />
+               }
             </div>
             <div className="repo-container">
-                <ProfileRepoClass followers={userInfo.followers} />
+                {
+                    <ProfileRepoClass followers={userInfo.followers} />
+                }
+                
             </div>
         </div>
     );
