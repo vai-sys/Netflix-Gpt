@@ -109,7 +109,7 @@ const Body = () => {
 
         <div className='res-container'>
           {listOfRestau.map((restaurant, index) => (
-            <Link to={"/restaurants/" + index} key={index}>
+            <Link to={"/restaurants/" + index} key={index} style={{textDecoration:"none", color:"black"}}>
               <RestaurantCard resData={restaurant} />
             </Link>
           ))}

@@ -12,9 +12,9 @@ const Header = () => {
       </div>
       <div className='nav-items'>
         <ul>
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/About">About Us</NavLink></li>
-          <li><NavLink to="/Contact">Contact Us</NavLink></li>
+          <li><NavLink to="/" style={{textDecoration:"none",color:"black"}}>Home</NavLink></li>
+          <li><NavLink to="/About"  style={{textDecoration:"none",color:"black"}}>About Us</NavLink></li>
+          <li><NavLink to="/Contact"  style={{textDecoration:"none",color:"black"}}>Contact Us</NavLink></li>
           <li><GrCart className='cart' /></li>
           <button className='login' onClick={() => {
             loginname === 'Login' ? setloginname('Logout') : setloginname('Login');
