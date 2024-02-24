@@ -3,6 +3,7 @@ import ProfileUserClass from './ProfileUserClass';
 import ProfileRepoClass from './ProfileRepoClass';
 import { Github_API_User, Github_UserName, options } from "../utils/constants";
 
+
 const User = () => {
     const [userInfo, setUserInfo] = useState(null);
 
@@ -21,8 +22,8 @@ const User = () => {
     }, []);
 
     if (userInfo === null) {
-        // Data is still loading
-        return <p>Loading...</p>;
+       
+        return <p>Loading...</p>
     }
 
     return (

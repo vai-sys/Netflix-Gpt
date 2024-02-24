@@ -1,6 +1,5 @@
 import { shimmer_card_unit, shimmer_menu_card_unit } from "../utils/constants";
 
-// Shimmer card to display with animation
 const CardShimmer = () => {
   return (
     <div className="shimmer-card">
@@ -16,10 +15,14 @@ export const MenuShimmer = () => {
   return (
     <div className="restaurant-menu">
       <div className="restaurant-summary stroke-color animate">
-        <img className="shimmer-img stroke animate" />
+        <img className="shimmer-img stroke animate" alt=" shimmer" />
         <div className="restaurant-summary-details">
-          <h2 className="shimmer-w40  stroke animate"></h2>
-          <p className="shimmer-w20 stroke animate"></p>
+          <h2 className="shimmer-w40  stroke animate">
+
+          </h2>
+          <p className="shimmer-w20 stroke animate">
+
+          </p>
           <div className="shimmer-w60  stroke animate">
           </div>
         </div>
@@ -40,7 +43,7 @@ export const MenuShimmer = () => {
                 <p className="shimmer-w60  stroke animate"></p>
               </div>
               <div className="shimmer-img-wrapper">
-                <img className="shimmer-img stroke animate" /> 
+                <img className="shimmer-img stroke animate"  alt="animate"/> 
                 <div className="shimmer-btn stroke animate"> </div>
               </div>
             </div>
