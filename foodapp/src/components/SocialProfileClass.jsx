@@ -8,7 +8,7 @@ import {
   Twitter_Link,
 } from "../utils/constants";
 
-const SocialProfileFunctional = () => {
+const SocialProfileClass = () => {
   return (
     <div className="social-media-container">
       <a href={Linkedin_Link} className="icon-button linkedin" target="_blank" rel="noopener noreferrer">
@@ -35,7 +35,7 @@ const SocialProfileFunctional = () => {
   );
 };
 
-export default SocialProfileFunctional;
+export default SocialProfileClass;
 
 
 

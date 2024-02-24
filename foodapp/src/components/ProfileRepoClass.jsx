@@ -41,7 +41,7 @@ const ProfileRepoFunctional = ({ followers }) => {
             </h1>
             <h3 className="repo-des">{repo.description}</h3>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              <div className="profile-repo-items">
+              {/* <div className="profile-repo-items">
                 <h3>
                   <FiUsers />
                   <span>{followers} Followers</span>
@@ -54,7 +54,7 @@ const ProfileRepoFunctional = ({ followers }) => {
                   <BiStar />
                   <span>{repo.stargazers_count} Stars</span>
                 </h3>
-              </div>
+              </div> */}
             </a>
           </div>
         ))}
