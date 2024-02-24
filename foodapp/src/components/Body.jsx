@@ -68,6 +68,7 @@ import React, { useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import restaurant_data from '../utils/Mockdata';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 const Body = () => {
   const [listOfRestau, setListOfRestau] = useState(restaurant_data);
@@ -84,6 +85,9 @@ const Body = () => {
     );
     setListOfRestau(filteredRestu);
   };
+
+  const onlineStatus=useOnlineStatus();
+  if(onlineStatus===false) return<h1>Looks like you are offline!</h1>
 
   return (
     <>
