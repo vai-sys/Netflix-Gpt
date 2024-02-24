@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { GrCart } from 'react-icons/gr';
 import { NavLink } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus'
 
 const Header = () => {
   const [loginname, setloginname] = useState('Login');
+  const onlineStatus=useOnlineStatus();
 
   return (
     <div className='header'>
@@ -12,6 +14,7 @@ const Header = () => {
       </div>
       <div className='nav-items'>
         <ul>
+          <li>Network Status:{onlineStatus ? "✅" :"🔴"}</li>
           <li><NavLink to="/" style={{textDecoration:"none",color:"black"}}>Home</NavLink></li>
           <li><NavLink to="/About"  style={{textDecoration:"none",color:"black"}}>About Us</NavLink></li>
           <li><NavLink to="/Contact"  style={{textDecoration:"none",color:"black"}}>Contact Us</NavLink></li>
