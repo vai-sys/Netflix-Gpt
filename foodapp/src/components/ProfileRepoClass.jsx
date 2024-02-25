@@ -34,11 +34,11 @@ const ProfileRepoFunctional = ({ followers }) => {
         .filter((repo) => repo.name === Github_Repository_Name)
         .map((repo) => (
           <div key={repo.id}>
-            <h1>
+            {/* <h1>
               <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                 {repo.name}
               </a>
-            </h1>
+            </h1> */}
             <h3 className="repo-des">{repo.description}</h3>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               {/* <div className="profile-repo-items">

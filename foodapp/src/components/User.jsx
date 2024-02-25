@@ -29,7 +29,7 @@ const User = () => {
     return (
         <div className="profile-class-container">
             <div className="profile-container">
-                <h1 className="profile-title">About Me</h1>
+                <h1 className="profile-title"></h1>
                {
                  <ProfileUserClass data={userInfo} />
                }
