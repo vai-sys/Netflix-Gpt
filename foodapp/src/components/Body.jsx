@@ -5,6 +5,7 @@ import RestaurantCard from './RestaurantCard';
 import restaurant_data from '../utils/Mockdata';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import CardShimmer from './Shimmer';
 
 const Body = () => {
   const [listOfRestau, setListOfRestau] = useState(restaurant_data);
@@ -24,6 +25,7 @@ const Body = () => {
 
   const onlineStatus=useOnlineStatus();
   if(onlineStatus===false) return<h1>Looks like you are offline!</h1>
+  if (listOfRestau==null) return <CardShimmer/>
 
   return (
     <>
@@ -108,13 +110,13 @@ const Body = () => {
             flexWrap: 'wrap',
           }}
         >
-          {listOfRestau.map((restaurant, index) => (
+          {listOfRestau.map((restaurant) => (
             <Link
-              to={'/restaurants/' + index}
-              key={index}
+              to={'/restaurants/' + restaurant.data.id}
+              key={restaurant.data.id}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <RestaurantCard resData={restaurant} />
+              <RestaurantCard resData={restaurant}  />
             </Link>
           ))}
         </div>

@@ -1,17 +1,158 @@
+// import React, { useEffect, useState } from 'react';
+// import { swiggy_menu_api_URL } from '../utils/constants';
+// import MenuShimmer from './Shimmer';
+// import { useParams } from 'react-router-dom';
+
+// const RestaurantMenu = () => {
+//   const [resInfo, setResInfo] = useState(null);
+//   const { resId } = useParams();
+
+//   useEffect(() => {
+//     const fetchMenu = async () => {
+//       try {
+//         const data = await fetch(swiggy_menu_api_URL + resId);
+//         const json = await data.json();
+//         setResInfo(json.data);
+//       } catch (error) {
+//         console.error('Error fetching menu:', error);
+//       }
+//     };
+//     fetchMenu();
+//   }, [resId]);
+
+//   if (!resInfo) return <MenuShimmer />;
+
+//   // Check if the card exists with the specified type
+//   const restaurantCard = resInfo.cards.find(card => card.card['@type'] === "type.googleapis.com/swiggy.presentation.food.v2.Restaurant");
+
+//   // Check if the restaurantCard is defined before accessing its properties
+//   if (!restaurantCard) {
+//     return <div>Restaurant information not available.</div>;
+//   }
+
+//   const { info: { name, cuisines, costForTwoMessage, aggregatedDiscountInfoV2 } } = restaurantCard.card.card;
+
+//   return (
+//     <div className='menu'>
+//       <h1>{name}</h1>
+//       <h3>{cuisines ? cuisines.join(", ") : 'Cuisines not available'}</h3>
+//       <h3>{costForTwoMessage}</h3>
+//       <div>
+//         {aggregatedDiscountInfoV2 &&
+//           aggregatedDiscountInfoV2.shortDescriptionList.map((discount, index) => (
+//             <div key={index}>
+//               <strong>{discount.discountType}:</strong> {discount.meta}
+//             </div>
+//           ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default RestaurantMenu;
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import { swiggy_menu_api_URL } from '../utils/constants';
+// import MenuShimmer from './Shimmer';
+// import { useParams } from 'react-router-dom';
+
+// const RestaurantMenu = () => {
+//   const [resInfo, setResInfo] = useState(null);
+//   const { resId } = useParams();
+
+//   useEffect(() => {
+//     const fetchMenu = async () => {
+//       try {
+//         const data = await fetch(swiggy_menu_api_URL + resId);
+//         const json = await data.json();
+//         setResInfo(json.data);
+//       } catch (error) {
+//         console.error('Error fetching menu:', error);
+//       }
+//     };
+//     fetchMenu();
+//   }, [resId]);
+
+//   if (!resInfo) return <MenuShimmer />;
+
+//   const {
+//     info: {
+//       name,
+//       cuisines,
+//       costForTwoMessage,
+//       aggregatedDiscountInfoV2,
+//     },
+//   } = resInfo.cards[2].card.card;
+
+//   return (
+//     <div className='menu'>
+//       <h1>{name}</h1>
+//       <h3>{cuisines ? cuisines.join(", ") : 'Cuisines not available'}</h3>
+//       <h3>{costForTwoMessage}</h3>
+//       <div>
+//         {aggregatedDiscountInfoV2 &&
+//           aggregatedDiscountInfoV2.shortDescriptionList.map((discount, index) => (
+//             <div key={index}>
+//               <strong>{discount.discountType}:</strong> {discount.meta}
+//             </div>
+//           ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default RestaurantMenu;
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { swiggy_menu_api_URL } from '../utils/constants';
-import MenuShimmer from './Shimmer'
+import MenuShimmer from './Shimmer';
+import { useParams } from 'react-router-dom';
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState([]);
-  const resId = 1234/* Add your restaurant ID here */
+  const [restaurant, setRestaurant] = useState(null);
+  const [menuItems, setMenuItems] = useState([]);
+  const { resId } = useParams();
 
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const data = await fetch(swiggy_menu_api_URL + resId);
-        const json = await data.json();
-        setResInfo(json.data); // Assuming your API response is an array of menu items
+        const response = await fetch(swiggy_menu_api_URL + resId);
+        const json = await response.json();
+
+        // Set restaurant data
+        const restaurantData =
+          json?.data?.cards
+            ?.map((x) => x.card)
+            ?.find((x) => x && x.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.Restaurant")?.card
+            ?.info || null;
+        setRestaurant(restaurantData);
+
+        // Set menu item data
+        const menuItemsData =
+          json?.data?.cards
+            .find((x) => x.groupedCard)
+            ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map(
+              (x) => x.card?.card
+            )
+            ?.filter((x) => x["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+            ?.map((x) => x.itemCards)
+            .flat()
+            .map((x) => x.card?.info) || [];
+
+        const uniqueMenuItems = [];
+        menuItemsData.forEach((item) => {
+          if (!uniqueMenuItems.find((x) => x.id === item.id)) {
+            uniqueMenuItems.push(item);
+          }
+        });
+        setMenuItems(uniqueMenuItems);
       } catch (error) {
         console.error('Error fetching menu:', error);
       }
@@ -19,74 +160,41 @@ const RestaurantMenu = () => {
 
     fetchMenu();
   }, [resId]);
-  const {name,cuisines,costForTwoMessage}=resInfo?.cards[0]?.card?.card?.info;
- return  resInfo===null  ? <MenuShimmer/>
 
-  :(
+  if (!restaurant || !menuItems.length) return <MenuShimmer />;
+
+  const { name, cuisines, costForTwoMessage, aggregatedDiscountInfoV2 } = restaurant;
+
+  return (
     <div className='menu'>
       <h1>{name}</h1>
-      <h3>{cuisines.join(",")}</h3>
+      <h3>{cuisines ? cuisines.join(", ") : 'Cuisines not available'}</h3>
       <h3>{costForTwoMessage}</h3>
-      {/* <ul>
-        {menuData.map((item) => (
-          <li key={item.id}>{item.name}</li>
+      <div>
+        {aggregatedDiscountInfoV2 &&
+          aggregatedDiscountInfoV2.shortDescriptionList.map((discount, index) => (
+            <div key={index}>
+              <strong>{discount.discountType}:</strong> {discount.meta}
+            </div>
+          ))}
+      </div>
+
+      <h2>Menu:</h2>
+      <ul>
+        {menuItems.map((menuItem) => (
+          <li key={menuItem.id}>
+            <div>{menuItem.name}</div>
+            <div>{menuItem.price}</div>
+            {/* Add more details as needed */}
+          </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 };
 
 export default RestaurantMenu;
 
-
-
-// import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import restaurant_data from '../utils/menuData';
-// import Shimmer from "./Shimmer";
-
-// const RestaurantMenu = () => {
-//     const [resInfo, setResInfo] = useState(null);
-//     const { resId } = useParams();
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             await new Promise(resolve => setTimeout(resolve, 1000));
-
-//             // Check if resId is a valid index
-//             const index = parseInt(resId, 10);
-//             if (isNaN(index) || index < 0 || index >= restaurant_data.length) {
-//                 console.error(`Invalid resId: ${resId}`);
-//                 return;
-//             }
-
-//             const selectedRestaurant = restaurant_data[index];
-//             setResInfo(selectedRestaurant);
-//         };
-
-//         fetchData();
-//     }, [resId]);
-
-//     if (resInfo === null) return <Shimmer />;
-
-//     return (
-//         <div className="menu">
-//             <div>
-//                 <h1>{resInfo.name}</h1>
-//                 <h2>Menu</h2>
-//                 <ul>
-//                     {resInfo.menu_items.map((menuItem, itemIndex) => (
-//                         <li key={itemIndex}>
-//                             {menuItem.name} - {menuItem.cuisine} (${menuItem.price.toFixed(2)})
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default RestaurantMenu;
 
 
 
