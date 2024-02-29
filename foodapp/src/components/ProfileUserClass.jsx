@@ -6,12 +6,12 @@ const ProfileUserFunctional = ({ data }) => {
 
   return (
     <div className="profile-user-card">
-      <img
+      {/* <img
         className="profile-user-img"
         src={avatar_url}
         alt={name}
         title={name}
-      />
+      /> */}
       <p className="profile-user-bio">{bio}</p>
       <SocialProfileClass/>
     </div>

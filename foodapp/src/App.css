@@ -332,3 +332,29 @@
   width: 20%;
   margin-top: 4px;
 }
+
+/* css for menu */
+
+.menu-card{
+  max-width:900px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.menu-card h1{
+  font-weight: 600;
+  line-height: 0.6;
+}
+.discounts{
+  display:flex;
+  justify-content:center;
+  gap: 40px;
+  align-items:center;
+  max-width:900px;
+  margin-top:50px;
+  
+}
+.discount-card{
+  border:1px solid black;
+}

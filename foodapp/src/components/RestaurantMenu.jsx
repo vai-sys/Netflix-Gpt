@@ -167,13 +167,21 @@ const RestaurantMenu = () => {
 
   return (
     <div className='menu'>
-      <h1>{name}</h1>
-      <h3>{cuisines ? cuisines.join(", ") : 'Cuisines not available'}</h3>
-      <h3>{costForTwoMessage}</h3>
-      <div>
+      <div className='menu-card'>
+        <div className='first'>
+        <h1>{name}</h1>
+          <p>{cuisines ? cuisines.join(", ") : 'Cuisines not available'}</p>
+        </div>
+        <div className='second'>
+           <h2>{costForTwoMessage}</h2>
+         </div>
+      </div>
+    
+     
+      <div className='discounts'>
         {aggregatedDiscountInfoV2 &&
           aggregatedDiscountInfoV2.shortDescriptionList.map((discount, index) => (
-            <div key={index}>
+            <div key={index} className='discount-card'>
               <strong>{discount.discountType}:</strong> {discount.meta}
             </div>
           ))}
@@ -185,6 +193,7 @@ const RestaurantMenu = () => {
           <li key={menuItem.id}>
             <div>{menuItem.name}</div>
             <div>{menuItem.price}</div>
+            <div>rating</div>
             {/* Add more details as needed */}
           </li>
         ))}
