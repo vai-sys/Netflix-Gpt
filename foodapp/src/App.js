@@ -29,11 +29,11 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
-        children: [{ // nested routing
+        children: [{ 
           path: "profile",
-          element: <User />,
+          element: <User />, 
         }]
-      }, 
+      },  
       {
         path: 'Contact',
         element: <Contact />,
