@@ -1,5 +1,6 @@
 import React from 'react'
-import bg from '../assets/bg.jpg'
+import bg from '../Images/bg.jpg';
+import Header from './Header';
 
 const Login = () => {
   return (
