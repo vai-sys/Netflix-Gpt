@@ -11,7 +11,7 @@ const Login = () => {
       </div>
       <div>
         <img
-        img={bg} alt="bg">
+        src={bg} alt="bg">
           
         </img>
       </div>
@@ -20,4 +20,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
