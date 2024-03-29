@@ -6,7 +6,7 @@ const Login = () => {
     <div>
      <div>
      <Header/>
-      </div>
+      </div>  
       <div className='absolute'>
         <img src={bg} alt='bg-image'></img>
       </div>
